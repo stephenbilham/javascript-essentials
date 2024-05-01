@@ -23,5 +23,21 @@ const addPack = function (currentPack) {
   return newArticle;
 };
 
+const listItems = () => { 
+  return document.querySelectorAll('li');
+}
+
+function changeColor() { 
+  const list = listItems();
+  console.log(list);
+  list.forEach((item) => item.style.color = 'red');
+}
+
+const upperCase = () => { 
+  listItems().forEach(item =>  item.textContent = item.textContent.toUpperCase());
+}
+
 const main = document.querySelector("main");
 main.append(addPack(greenPack));
+changeColor();
+upperCase();

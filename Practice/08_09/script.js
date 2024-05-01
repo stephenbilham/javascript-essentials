@@ -17,6 +17,7 @@ const frogpack = {
   name: "Frog Backpack",
   volume: 8,
   color: "green",
+  description: 'this is some description',
   pocketNum: 3,
   strapLength: {
     left: 10,
@@ -57,3 +58,28 @@ const content = `
       }</span></li>
     </ul>  
 `;
+
+// Creates new <figure> element
+// *  - Adds <img> markup pointing to frogpack.image
+// *  - Adds <figcaption> element with image description
+// *  - Returns <figure> element to where function is called
+
+const addFigure = (data) => { 
+  const figure = document.createElement('figure')
+  const img = document.createElement('img')
+  img.setAttribute('src', data.image)
+  img.setAttribute('alt', 'some image')
+  const caption = document.createElement('figcaption')
+  caption.innerHTML = data.description
+  figure.append(img, caption)
+  return figure
+}
+
+const createArticle = (frogpack) => {
+  let newArticle = document.createElement("article");
+  newArticle.innerHTML = content;
+  newArticle.prepend(addFigure(frogpack));
+  return newArticle;
+};
+
+document.querySelector("main").append(createArticle(frogpack));

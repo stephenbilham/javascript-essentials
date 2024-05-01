@@ -7,15 +7,19 @@
  * List of ISO language codes:
  * @link http://www.lingoes.net/en/translator/langcode.htm
  */
+const formatter = (value, locale = 'en-CA', currency = 'CAD') => {  
+  let formattedValue = new Intl.NumberFormat(locale, { style: 'currency', currency }).format(value)
+  return formattedValue
+}
 
 const tipCalculator = (sum, percentage) => {
   let tip = sum * (percentage / 100);
   let total = sum + tip;
   console.log(`
-      Sum before tip: ${sum}
-      Tip percentage: ${percentage}%
-      Tip:            ${tip.toFixed(2)}
-      Total:          ${total.toFixed(2)}
+      Sum before tip: ${formatter(sum)}
+      Tip percentage: ${formatter(percentage)}%
+      Tip:            ${formatter(tip)}
+      Total:          ${formatter(total)}
     `);
 };
 
